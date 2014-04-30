@@ -30,8 +30,6 @@ public final class Teleport extends JavaPlugin
 		// in this case it's Practice
 		PluginDescriptionFile pdfFile = this.getDescription();
 		getLogger().info(pdfFile.getName() + " has been enabled!");
-
-
 	}
 
 	// On server stop/reload
@@ -55,22 +53,7 @@ public final class Teleport extends JavaPlugin
 			Location newLocation = new Location(player.getWorld(), X, Y, Z);
 			player.teleport(newLocation);
 			player.sendMessage(ChatColor.GREEN + "You were teleported to X: " + X + "Y: " + Y + "Z: " + Z);
-
 		}
 		return true;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
