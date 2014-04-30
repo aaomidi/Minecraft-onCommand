@@ -42,18 +42,30 @@ public final class Teleport extends JavaPlugin
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String args[])
 	{
+		//Command, doesn't matter if random, RANDOM, RaNdOm, etc
 		if(commandLabel.equalsIgnoreCase("random"))
 		{
-			Player player = (Player) sender;
+			//Casting player to sender, final because Zenexer taught me the ways :p
+			final Player player = (Player) sender;
 
+			//Math.random() is getting a random number between 0 and 1000
+			//casting (Math.random() * 1000) to an integer instead of a float
 			int X = (int) (Math.random() * 1000);
 			int Z = (int) (Math.random() * 1000);
+
+			//Have to initialize Y AFTER Z to get the highestpoint of the world's location
 			int Y = player.getWorld().getHighestBlockYAt(X, Z);
 
+			//Location method from int X, Z, Y
 			Location newLocation = new Location(player.getWorld(), X, Y, Z);
+
+			//Calling ^ method to teleport the player to a random location
 			player.teleport(newLocation);
+
+			//Player message on the final random teleport location
 			player.sendMessage(ChatColor.GREEN + "You were teleported to X: " + X + "Y: " + Y + "Z: " + Z);
 		}
+		//Boolean returned true onCommand
 		return true;
 	}
 }
